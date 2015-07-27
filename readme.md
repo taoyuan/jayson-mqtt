@@ -31,6 +31,8 @@ var server = rayson.server({
 	}
 }).mqtt('mqtt://localhost:9999', '$rpc/server1/localtime');
 
+server.format('msgpack'); // default is `json`
+
 ```
 
 ## Client
@@ -41,6 +43,8 @@ Consumes the api exposed by the previous example.
 var rayson = require('../'/*'rayson'*/);
 
 var client = rayson.client.mqtt('mqtt://localhost:9999', '$rpc/:sid/localtime');
+
+client.format('msgpack'); // default is `json`
 
 client.mqtt.on('error', function (err) {
 	console.error(err);
