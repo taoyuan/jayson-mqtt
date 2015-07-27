@@ -3,7 +3,7 @@
 var jayson = require('jayson');
 
 var Server = require('./lib/server');
-var Client = require('./lib/Client');
+var Client = require('./lib/client');
 
 exports.client = exports.Client = Client;
 
