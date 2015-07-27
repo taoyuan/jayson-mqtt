@@ -1,13 +1,13 @@
 {
-  "name": "jayson-mqtt",
+  "name": "rayson",
   "version": "0.1.2",
-  "description": "A JSON-RPC 2.0 client and server for mqtt based on jayson. ",
+  "description": "Rayson is a JSON-RPC 2.0 mqtt client and mqtt server for node.js based on jayson.",
   "license": "MIT",
-  "repository": "taoyuan/jayson-mqtt",
+  "repository": "taoyuan/rayson",
   "author": {
     "name": "taoyuan",
     "email": "towyuan@outlook.com",
-    "url": "github.com/taoyuan/jayson-mqtt"
+    "url": "github.com/taoyuan/rayson"
   },
   "engines": {
     "node": ">=0.10.0"

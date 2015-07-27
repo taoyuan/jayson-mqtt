@@ -1,6 +1,6 @@
 "use strict";
 
-var jmqtt = require('../'/*'jayson-mqtt'*/);
+var jmqtt = require('../'/*'rayson'*/);
 
 var moscaServer = new require('mosca').Server({port: 9999}); // start mosca server for test
 

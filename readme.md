@@ -1,7 +1,7 @@
-# jayson-mqtt
+# rayson
 
-[![Build](https://circleci.com/gh/taoyuan/jayson-mqtt.svg?style=shield)](https://circleci.com/gh/taoyuan/jayson-mqtt)
-[![Dependencies](https://david-dm.org/taoyuan/jayson-mqtt.svg)](https://david-dm.org/taoyuan/jayson-mqtt)
+[![Build](https://circleci.com/gh/taoyuan/rayson.svg?style=shield)](https://circleci.com/gh/taoyuan/rayson)
+[![Dependencies](https://david-dm.org/taoyuan/rayson.svg)](https://david-dm.org/taoyuan/rayson)
 
 > A JSON-RPC 2.0 client and server for mqtt based on jayson. 
 
@@ -9,7 +9,7 @@
 ## Installation
 
 ```
-$ npm install --save jayson-mqtt
+$ npm install --save rayson
 ```
 
 
@@ -20,11 +20,11 @@ jason-mqtt server played as a mqtt consumer, so it need a mqtt server start firs
 Exposes an array of functions which retrieves and returns data.
 
 ```js
-var jmqtt = require('../'/*'jayson-mqtt'*/);
+var rayson = require('../'/*'rayson'*/);
 
 var moscaServer = new require('mosca').Server({port: 9999}); // start mosca server for test
 
-var server = jmqtt.server({
+var server = rayson.server({
 	localtime: function (cb) {
 		console.log('localtime has been called');
 		cb(null, new Date());
@@ -38,9 +38,9 @@ var server = jmqtt.server({
 Consumes the api exposed by the previous example.
 
 ```js
-var jmqtt = require('../'/*'jayson-mqtt'*/);
+var rayson = require('../'/*'rayson'*/);
 
-var client = jmqtt.client('mqtt://localhost:9999', '$rpc/:sid/localtime');
+var client = rayson.client.mqtt('mqtt://localhost:9999', '$rpc/:sid/localtime');
 
 client.mqtt.on('error', function (err) {
 	console.error(err);
@@ -66,4 +66,4 @@ client.sid('server1').request('localtime', [], function(err, error, time) {
 
 ## License
 
-MIT © [taoyuan](https://github.com/taoyuan/jayson-mqtt)
+MIT © [taoyuan](https://github.com/taoyuan/rayson)

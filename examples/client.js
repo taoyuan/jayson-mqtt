@@ -1,8 +1,8 @@
 "use strict";
 
-var jmqtt = require('../'/*'jayson-mqtt'*/);
+var jmqtt = require('../'/*'rayson'*/);
 
-var client = jmqtt.client('mqtt://localhost:9999', '$rpc/:sid/localtime');
+var client = jmqtt.client.mqtt('mqtt://localhost:9999', '$rpc/:sid/localtime');
 
 client.mqtt.on('error', function (err) {
 	console.error(err);

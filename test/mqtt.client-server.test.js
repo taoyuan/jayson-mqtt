@@ -2,9 +2,9 @@
 
 var t = require('chai').assert;
 var s = require('./support');
-var jmqtt = require('../');
+var rayson = require('../');
 
-describe('Jayson.MQTT', function() {
+describe('Rayson.MQTT', function() {
 
 	describe('server', function () {
 
@@ -20,7 +20,7 @@ describe('Jayson.MQTT', function() {
 		after(s.abStopMosca());
 
 		it('should connect to ', function(done) {
-			server = jmqtt.server(s.server.methods).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
+			server = rayson.server(s.server.methods).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
 			if (server.mqtt.connected) return done();
 			server.mqtt.on('connect', done);
 		});
@@ -36,8 +36,8 @@ describe('Jayson.MQTT', function() {
 		before(s.abStartMosca());
 
 		before(function () {
-			server = jmqtt.server(s.server.methods).mqtt(url, '$RPC/service/123');
-			client = jmqtt.client(url, {topic: '$RPC/service/:service'});
+			server = rayson.server(s.server.methods).mqtt(url, '$RPC/service/123');
+			client = rayson.client.mqtt(url, {topic: '$RPC/service/:service'});
 		});
 
 		after(function (done) {
