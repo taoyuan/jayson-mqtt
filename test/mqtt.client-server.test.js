@@ -21,8 +21,7 @@ describe('Rayson.MQTT', function() {
 
 		it('should connect to ', function(done) {
 			server = rayson.server(s.server.methods).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
-			if (server.mqtt.connected) return done();
-			server.mqtt.on('connect', done);
+			server.ready(done);
 		});
 
 	});

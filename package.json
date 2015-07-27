@@ -1,6 +1,6 @@
 {
   "name": "rayson",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Rayson is a JSON-RPC 2.0 mqtt client and mqtt server for node.js based on jayson.",
   "license": "MIT",
   "repository": "taoyuan/rayson",
