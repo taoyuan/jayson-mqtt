@@ -1,4 +1,7 @@
-# jayson-mqtt [![Build Status](https://travis-ci.org/taoyuan/jayson-mqtt.svg?branch=master)](https://travis-ci.org/taoyuan/jayson-mqtt)
+# jayson-mqtt
+
+[![Build](https://circleci.com/gh/taoyuan/jayson-mqtt.svg?style=shield)](https://circleci.com/gh/taoyuan/jayson-mqtt)
+[![Dependencies](https://david-dm.org/taoyuan/jayson-mqtt.svg)](https://david-dm.org/taoyuan/jayson-mqtt)
 
 > A JSON-RPC 2.0 client and server for mqtt based on jayson. 
 
