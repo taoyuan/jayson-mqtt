@@ -3,7 +3,7 @@
 [![Build](https://circleci.com/gh/taoyuan/rayson.svg?style=shield)](https://circleci.com/gh/taoyuan/rayson)
 [![Dependencies](https://david-dm.org/taoyuan/rayson.svg)](https://david-dm.org/taoyuan/rayson)
 
-> A JSON-RPC 2.0 client and server for mqtt based on jayson. 
+> Rayson is a JSON-RPC 2.0 mqtt client and mqtt server for node.js based on jayson.
 
 
 ## Installation
