@@ -1,10 +1,14 @@
 'use strict';
-module.exports = function (str, opts) {
-	if (typeof str !== 'string') {
-		throw new TypeError('Expected a string');
-	}
 
-	opts = opts || {};
+var jayson = require('jayson');
 
-	return str + ' & ' + (opts.postfix || 'rainbows');
+var Server = require('./lib/server');
+var Client = require('./lib/Client');
+
+exports.client = exports.Client = Client;
+
+exports.server = function (methods, options) {
+	var s = jayson.server(methods, options);
+	s.mqtt = Server.bind(undefined, s);
+	return s;
 };
