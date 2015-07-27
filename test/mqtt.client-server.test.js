@@ -27,7 +27,32 @@ describe('Rayson.MQTT', function() {
 
 	});
 
-	describe('client', function() {
+	describe('client', function () {
+
+		it('should initiate client with 2 params', function (done) {
+			var client = rayson.client.mqtt('mqtt://localhost', '$RPC/service/:service');
+			t.ok(client.client);
+			t.ok(client.options.topic);
+			client.close(done);
+		});
+
+		it('should initiate client with 1 params', function (done) {
+			var client = rayson.client.mqtt({url: 'mqtt://localhost', topic: '$RPC/service/:service'});
+			t.ok(client.client);
+			t.ok(client.options.topic);
+			client.close(done);
+		});
+
+		it('should initiate mqtt js client', function (done) {
+			var mqttclient = require('mqtt').connect('mqtt://localhost');
+			var client = rayson.client.mqtt(mqttclient, {topic: '$RPC/service/:service'});
+			t.ok(client.client);
+			t.ok(client.options.topic);
+			client.close(done);
+		});
+	});
+
+	describe('integration', function() {
 
 		var url = 'mqtt://localhost:' + s.port;
 
