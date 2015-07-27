@@ -1,0 +1,30 @@
+{
+  "name": "jayson-mqtt",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "taoyuan/jayson-mqtt",
+  "author": {
+    "name": "taoyuan",
+    "email": "towyuan@outlook.com",
+    "url": "github.com/taoyuan/jayson-mqtt"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "index.js",
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "jayson": "^1.2.0",
+    "msgpack": "^0.2.6"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "*"
+  }
+}
