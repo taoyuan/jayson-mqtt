@@ -1,45 +1,65 @@
 # jayson-mqtt [![Build Status](https://travis-ci.org/taoyuan/jayson-mqtt.svg?branch=master)](https://travis-ci.org/taoyuan/jayson-mqtt)
 
-> My perfect module
+> A JSON-RPC 2.0 client and server for mqtt based on jayson. 
 
 
-## Install
+## Installation
 
 ```
 $ npm install --save jayson-mqtt
 ```
 
 
-## Usage
+## Server
+
+jason-mqtt server played as a mqtt consumer, so it need a mqtt server start first. We can use [mosca](https://github.com/mcollina/mosca).
+
+Exposes an array of functions which retrieves and returns data.
 
 ```js
-var jaysonMqtt = require('jayson-mqtt');
+var jmqtt = require('../'/*'jayson-mqtt'*/);
 
-jaysonMqtt('unicorns');
-//=> unicorns & rainbows
+var moscaServer = new require('mosca').Server({port: 9999}); // start mosca server for test
+
+var server = jmqtt.server({
+	localtime: function (cb) {
+		console.log('localtime has been called');
+		cb(null, new Date());
+	}
+}).mqtt('mqtt://localhost:9999', '$rpc/server1/localtime');
+
 ```
 
+## Client
 
-## API
+Consumes the api exposed by the previous example.
 
-### jaysonMqtt(input, [options])
+```js
+var jmqtt = require('../'/*'jayson-mqtt'*/);
 
-#### input
+var client = jmqtt.client('mqtt://localhost:9999', '$rpc/:sid/localtime');
 
-*Required*  
-Type: `string`
+client.mqtt.on('error', function (err) {
+	console.error(err);
+});
 
-Lorem ipsum.
+client.mqtt.on('connect', function () {
+	console.log('connected');
+});
 
-#### options
+client.mqtt.on('reconnect', function () {
+	console.log('reconnect');
+});
 
-##### foo
+client.mqtt.on('offline', function () {
+	console.log('offline');
+});
 
-Type: `boolean`  
-Default: `false`
+client.sid('server1').request('localtime', [], function(err, error, time) {
+	console.log('localtime: ', time);
+}).timeout(10);
 
-Lorem ipsum.
-
+```
 
 ## License
 
