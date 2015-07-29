@@ -4,7 +4,7 @@ var t = require('chai').assert;
 var s = require('./support');
 var rayson = require('../');
 
-describe.only('Rayson.AMQP', function () {
+describe('Rayson.AMQP', function () {
 
 	describe('server', function () {
 
