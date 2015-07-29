@@ -5,6 +5,7 @@ var s = require('./support');
 var rayson = require('../');
 
 describe('Rayson.AMQP', function () {
+	this.timeout(10000);
 
 	describe('server', function () {
 
@@ -42,7 +43,7 @@ describe('Rayson.AMQP', function () {
 		it('should initiate amqp js client', function (done) {
 			var amqpclient = require('amqper').connect('amqp://localhost');
 			var client = rayson.client.amqp(amqpclient, {topic: '$RPC/service/:service'});
-			t.ok(client.client);
+			t.equal(client.client, amqpclient);
 			t.ok(client.options.topic);
 			client.close(done);
 		});
