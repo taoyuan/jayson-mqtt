@@ -1,7 +1,7 @@
 {
   "name": "rayson",
   "version": "0.1.7",
-  "description": "Rayson is a JSON-RPC 2.0 mqtt client and mqtt server for node.js based on jayson.",
+  "description": "Rayson is a jayson extension for to use mq like mqtt and amqp as the transport.",
   "license": "MIT",
   "repository": "taoyuan/rayson",
   "author": {
@@ -24,13 +24,15 @@
     "mosca"
   ],
   "dependencies": {
+    "amqper": "^0.1.3",
     "debug": "^2.2.0",
     "expirable": "^0.1.0",
     "jayson": "^1.2.0",
     "lodash": "^3.10.0",
     "mqtt": "^1.3.5",
     "mqtt-router": "^0.5.0",
-    "msgpack": "^0.2.6"
+    "msgpack": "^0.2.6",
+    "node-cache": "^3.0.0"
   },
   "devDependencies": {
     "chai": "*",

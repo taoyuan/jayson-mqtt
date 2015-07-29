@@ -65,8 +65,8 @@ describe('Rayson.MQTT', function() {
 		});
 
 		after(function (done) {
-			server.mqtt.end(function () {
-				client.mqtt.end(done);
+			server.client.end(function () {
+				client.client.end(done);
 			});
 		});
 
