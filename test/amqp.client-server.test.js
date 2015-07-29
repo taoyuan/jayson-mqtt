@@ -50,8 +50,6 @@ describe('Rayson.AMQP', function () {
 	});
 
 	describe('integration', function () {
-		this.timeout(5000);
-
 		var url = 'amqp://localhost';
 
 		var server, client;
