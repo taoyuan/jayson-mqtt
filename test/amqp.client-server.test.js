@@ -16,7 +16,9 @@ describe('Rayson.AMQP', function () {
 
 		it('should connect to ', function (done) {
 			server = rayson.server(s.server.methods).amqp('amqp://localhost', '$RPC/service/123');
-			server.ready(done);
+			server.ready(function () {
+				delaycall(done);
+			});
 		});
 
 	});
@@ -73,7 +75,7 @@ describe('Rayson.AMQP', function () {
 				.service('123')
 				.request('add', [2, 3], function (err, error, data) {
 					t.equal(data, 5);
-					delayDone(done);
+					delaycall(done);
 				});
 		});
 
@@ -82,7 +84,7 @@ describe('Rayson.AMQP', function () {
 				.service('123')
 				.request('add', {a: 2, b: 3}, function (err, error, data) {
 					t.equal(data, 5);
-					delayDone(done);
+					delaycall(done);
 				});
 		});
 
@@ -92,7 +94,7 @@ describe('Rayson.AMQP', function () {
 				.request('add_slow', [4, 3, true], function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
-					delayDone(done);
+					delaycall(done);
 				}).timeout(10);
 		});
 
@@ -102,12 +104,12 @@ describe('Rayson.AMQP', function () {
 				.request('add', {a: 2, b: 3}, function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
-					delayDone(done);
+					delaycall(done);
 				}).timeout(10);
 		});
 	});
 });
 
-function delayDone(done) { // delay done for send message ack
+function delaycall(done) { // delay done for send message ack
 	setTimeout(done, 100);
 }
