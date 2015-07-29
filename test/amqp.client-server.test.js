@@ -71,7 +71,7 @@ describe('Rayson.AMQP', function () {
 
 		it('should request with array params', function (done) {
 			client
-				.service('123')
+				.for(['123'])
 				.request('add', [2, 3], function (err, error, data) {
 					t.equal(data, 5);
 					s.delaycall(done);
@@ -80,7 +80,7 @@ describe('Rayson.AMQP', function () {
 
 		it('should request with object params', function (done) {
 			client
-				.service('123')
+				.for({service: '123'})
 				.request('add', {a: 2, b: 3}, function (err, error, data) {
 					t.equal(data, 5);
 					s.delaycall(done);
@@ -89,7 +89,7 @@ describe('Rayson.AMQP', function () {
 
 		it('should callback with an error on timeout', function (done) {
 			client
-				.service('321')
+				.for('321')
 				.request('add_slow', [4, 3, true], function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
@@ -99,12 +99,19 @@ describe('Rayson.AMQP', function () {
 
 		it('should timeout if path param is incorrect', function (done) {
 			client
-				.service('321')
+				.for('321')
 				.request('add', {a: 2, b: 3}, function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
 					s.delaycall(done);
 				}).timeout(10);
+		});
+
+		it('should throw error without params settings', function () {
+			t.throw(function () {
+				client.request('add', [2, 3], function (err, error, data) {
+				});
+			});
 		});
 	});
 });
