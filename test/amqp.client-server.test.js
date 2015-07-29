@@ -18,7 +18,7 @@ describe('Rayson.AMQP', function () {
 		it('should connect to ', function (done) {
 			server = rayson.server(s.server.methods).amqp('amqp://localhost', '$RPC/service/123');
 			server.ready(function () {
-				delaycall(done);
+				s.delaycall(done);
 			});
 		});
 
@@ -59,7 +59,9 @@ describe('Rayson.AMQP', function () {
 			client = rayson.client.amqp(url, {topic: 'rpc/service/:service'});
 
 			server.ready(function () {
-				client.ready(done);
+				client.ready(function () {
+					s.delaycall(500, done);
+				});
 			})
 		});
 
@@ -74,7 +76,7 @@ describe('Rayson.AMQP', function () {
 				.service('123')
 				.request('add', [2, 3], function (err, error, data) {
 					t.equal(data, 5);
-					delaycall(done);
+					s.delaycall(done);
 				});
 		});
 
@@ -83,7 +85,7 @@ describe('Rayson.AMQP', function () {
 				.service('123')
 				.request('add', {a: 2, b: 3}, function (err, error, data) {
 					t.equal(data, 5);
-					delaycall(done);
+					s.delaycall(done);
 				});
 		});
 
@@ -93,7 +95,7 @@ describe('Rayson.AMQP', function () {
 				.request('add_slow', [4, 3, true], function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
-					delaycall(done);
+					s.delaycall(done);
 				}).timeout(10);
 		});
 
@@ -103,12 +105,9 @@ describe('Rayson.AMQP', function () {
 				.request('add', {a: 2, b: 3}, function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
-					delaycall(done);
+					s.delaycall(done);
 				}).timeout(10);
 		});
 	});
 });
 
-function delaycall(done) { // delay done for send message ack
-	setTimeout(done, 100);
-}

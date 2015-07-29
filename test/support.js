@@ -30,6 +30,14 @@ exports.abStopMosca = function () {
 	}
 };
 
+exports.delaycall = function delaycall(ms, done) { // delay done for send message ack
+	if (typeof ms === 'function') {
+		done = ms;
+		ms = 100;
+	}
+	setTimeout(done, ms || 100);
+};
+
 exports.server = {};
 /*
  * Methods for the common test server
