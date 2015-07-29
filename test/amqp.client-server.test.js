@@ -59,9 +59,7 @@ describe('Rayson.AMQP', function () {
 			client = rayson.client.amqp(url, {topic: 'rpc/service/:service'});
 
 			server.ready(function () {
-				client.ready(function () {
-					s.delaycall(100, done);
-				});
+				s.delaycall(100, done);
 			})
 		});
 
