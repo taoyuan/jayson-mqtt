@@ -60,7 +60,7 @@ describe('Rayson.AMQP', function () {
 
 			server.ready(function () {
 				client.ready(function () {
-					s.delaycall(500, done);
+					s.delaycall(100, done);
 				});
 			})
 		});
