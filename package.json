@@ -24,7 +24,7 @@
     "mosca"
   ],
   "dependencies": {
-    "amqper": "^0.1.8",
+    "amqper": "^0.2.0",
     "debug": "^2.2.0",
     "expirable": "^0.1.0",
     "jayson": "^1.2.0",
@@ -37,6 +37,6 @@
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "mosca": "^0.31.0"
+    "mosca": "^0.31.1"
   }
 }
