@@ -1,6 +1,6 @@
 {
   "name": "rayson",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Rayson is a jayson extension for to use mq like mqtt and amqp as the transport.",
   "license": "MIT",
   "repository": "taoyuan/rayson",
