@@ -4,7 +4,7 @@ var t = require('chai').assert;
 var s = require('./support');
 var rayson = require('../');
 
-describe('Rayson.MQTT', function() {
+describe('Rayson.MQTT', function () {
 
 	describe('server', function () {
 
@@ -19,9 +19,11 @@ describe('Rayson.MQTT', function() {
 
 		after(s.abStopMosca());
 
-		it('should connect to ', function(done) {
+		it('should connect to ', function (done) {
 			server = rayson.server(s.server.methods).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
-			server.ready(done);
+			server.ready(function () {
+				s.delaycall(done);
+			});
 		});
 
 	});
@@ -51,7 +53,7 @@ describe('Rayson.MQTT', function() {
 		});
 	});
 
-	describe('integration', function() {
+	describe('integration', function () {
 
 		var url = 'mqtt://localhost:' + s.port;
 
@@ -91,8 +93,8 @@ describe('Rayson.MQTT', function() {
 				});
 		});
 
-		it('should callback with an error on timeout', function(done) {
-			client.request('add_slow', [4, 3, true], function(err, response) {
+		it('should callback with an error on timeout', function (done) {
+			client.request('add_slow', [4, 3, true], function (err, response) {
 				t.instanceOf(err, Error);
 				t.notOk(response);
 				done();
@@ -102,7 +104,7 @@ describe('Rayson.MQTT', function() {
 		it('should timeout if path param is incorrect', function (done) {
 			client
 				.service('321')
-				.request('add', {a: 2, b: 3}, function(err, response) {
+				.request('add', {a: 2, b: 3}, function (err, response) {
 					t.instanceOf(err, Error);
 					t.notOk(response);
 					done();

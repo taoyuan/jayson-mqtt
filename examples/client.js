@@ -22,6 +22,6 @@ client.mqtt.on('offline', function () {
 	console.log('offline');
 });
 
-client.sid('server1').request('localtime', [], function(err, error, time) {
+client.sid('server1').request('localtime', [], function (err, error, time) {
 	console.log('localtime: ', time);
 }).timeout(10);
