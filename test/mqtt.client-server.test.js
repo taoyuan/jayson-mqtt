@@ -20,7 +20,7 @@ describe('Rayson.MQTT', function () {
 		after(s.abStopMosca());
 
 		it('should connect to ', function (done) {
-			server = rayson.server(s.server.methods).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
+			server = rayson.server(s.server.methods, {collect: false}).mqtt('mqtt://localhost:' + s.port, '$RPC/service/123');
 			server.ready(function () {
 				s.delaycall(done);
 			});
@@ -62,7 +62,7 @@ describe('Rayson.MQTT', function () {
 		before(s.abStartMosca());
 
 		before(function () {
-			server = rayson.server(s.server.methods).mqtt(url, '$RPC/service/123');
+			server = rayson.server(s.server.methods, {collect: false}).mqtt(url, '$RPC/service/123');
 			client = rayson.client.mqtt(url, {topic: '$RPC/service/:service'});
 		});
 
