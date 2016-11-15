@@ -7,8 +7,3 @@ machine:
 general:
   artifacts:
     - "reports"
-
-test:
-  override:
-    - nvm use lts;
-    - nvm use stable;
