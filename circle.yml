@@ -2,7 +2,7 @@ machine:
   timezone:
     Asia/Shanghai
   node:
-    version: v6
+    version: v0.12.7
 
 general:
   artifacts:

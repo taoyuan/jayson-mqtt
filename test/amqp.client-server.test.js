@@ -55,7 +55,7 @@ describe('Rayson.AMQP', function () {
 		var server, client;
 
 		beforeEach(function (done) {
-			server = rayson.server(s.server.methods, {collect: false}).amqp(url, 'rpc/service/123');
+			server = rayson.server(s.server.methods).amqp(url, 'rpc/service/123');
 			client = rayson.client.amqp(url, {topic: 'rpc/service/:service'});
 
 			server.ready(function () {
