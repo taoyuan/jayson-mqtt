@@ -25,18 +25,18 @@
   ],
   "dependencies": {
     "amqper": "^0.3.1",
-    "debug": "^2.3.2",
+    "debug": "^2.2.0",
     "expirable": "^0.1.0",
-    "jayson": "^2.0.2",
-    "lodash": "^4.17.1",
-    "mqtt": "^2.1.1",
+    "jayson": "^1.2.2",
+    "lodash": "^3.10.1",
+    "mqtt": "^1.6.1",
     "mqtt-router": "^0.5.0",
     "msgpack": "^1.0.2",
-    "node-cache": "^4.1.0"
+    "node-cache": "^3.0.0"
   },
   "devDependencies": {
     "chai": "*",
     "mocha": "*",
-    "mosca": "^2.2.0"
+    "mosca": "^0.32.1"
   }
 }
