@@ -1,14 +1,14 @@
 "use strict";
 
-var t = require('chai').assert;
-var s = require('./support');
-var rayson = require('../');
+const t = require('chai').assert;
+const s = require('./support');
+const rayson = require('..');
 
 describe('Rayson.MQTT', function () {
 
 	describe('server', function () {
 
-		var server = null;
+		let server = null;
 
 		before(s.abStartMosca());
 
@@ -31,22 +31,22 @@ describe('Rayson.MQTT', function () {
 	describe('client', function () {
 
 		it('should initiate client with 2 params', function (done) {
-			var client = rayson.client.mqtt('mqtt://localhost', '$RPC/service/:service');
+			const client = rayson.client.mqtt('mqtt://localhost', '$RPC/service/:service');
 			t.ok(client.client);
 			t.ok(client.options.topic);
 			client.close(done);
 		});
 
 		it('should initiate client with 1 params', function (done) {
-			var client = rayson.client.mqtt({url: 'mqtt://localhost', topic: '$RPC/service/:service'});
+			const client = rayson.client.mqtt({url: 'mqtt://localhost', topic: '$RPC/service/:service'});
 			t.ok(client.client);
 			t.ok(client.options.topic);
 			client.close(done);
 		});
 
 		it('should initiate mqtt js client', function (done) {
-			var mqttclient = require('mqtt').connect('mqtt://localhost');
-			var client = rayson.client.mqtt(mqttclient, {topic: '$RPC/service/:service'});
+			const mqttclient = require('mqtt').connect('mqtt://localhost');
+			const client = rayson.client.mqtt(mqttclient, {topic: '$RPC/service/:service'});
 			t.ok(client.client);
 			t.ok(client.options.topic);
 			client.close(done);
@@ -54,10 +54,11 @@ describe('Rayson.MQTT', function () {
 	});
 
 	describe('integration', function () {
+		this.timeout(10000);
 
-		var url = 'mqtt://localhost:' + s.port;
+		const url = 'mqtt://localhost:' + s.port;
 
-		var server, client;
+		let server, client;
 
 		before(s.abStartMosca());
 

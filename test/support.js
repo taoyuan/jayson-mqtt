@@ -1,9 +1,9 @@
 "use strict";
 
-var _ = require('lodash');
-var mosca = require('mosca');
+const _ = require('lodash');
+const mosca = require('mosca');
 
-var port = 9876;
+const port = 9876;
 
 Object.defineProperty(exports, 'port', {
 	get: function () {
@@ -57,12 +57,12 @@ exports.server.methods = {
 	},
 
 	add: function(a, b, callback) {
-		var result = a + b;
+		const result = a + b;
 		callback(null, result);
 	},
 
 	add_slow: function(a, b, isSlow, callback) {
-		var result = a + b;
+		const result = a + b;
 		if(!isSlow) return callback(null, result);
 		setTimeout(function() {
 			callback(null, result);

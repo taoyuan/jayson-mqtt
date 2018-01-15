@@ -1,15 +1,15 @@
 "use strict";
 
-var t = require('chai').assert;
-var s = require('./support');
-var rayson = require('../');
+const t = require('chai').assert;
+const s = require('./support');
+const rayson = require('../');
 
-describe('Rayson.AMQP', function () {
+describe.only('Rayson.AMQP', function () {
 	this.timeout(10000);
 
 	describe('server', function () {
 
-		var server = null;
+		let server = null;
 
 		after(function (done) {
 			server.close(done);
@@ -25,34 +25,33 @@ describe('Rayson.AMQP', function () {
 	});
 
 	describe('client', function () {
-
-		it('should initiate client with 2 params', function (done) {
-			var client = rayson.client.amqp('amqp://localhost', '$RPC/service/:service');
+		it('should initiate client with 2 params', function () {
+			const client = rayson.client.amqp('amqp://localhost', '$RPC/service/:service');
 			t.ok(client.client);
 			t.ok(client.options.topic);
-			client.close(done);
+			return client.close(100);
 		});
 
-		it('should initiate client with 1 params', function (done) {
-			var client = rayson.client.amqp({url: 'amqp://localhost', topic: '$RPC/service/:service'});
+		it('should initiate client with 1 params', function () {
+			const client = rayson.client.amqp({url: 'amqp://localhost', topic: '$RPC/service/:service'});
 			t.ok(client.client);
 			t.ok(client.options.topic);
-			client.close(done);
+			return client.close(100);
 		});
 
-		it('should initiate amqp js client', function (done) {
-			var amqpclient = require('amqper').connect('amqp://localhost');
-			var client = rayson.client.amqp(amqpclient, {topic: '$RPC/service/:service'});
+		it('should initiate amqp js client', function () {
+			const amqpclient = require('amqper').connect('amqp://localhost');
+			const client = rayson.client.amqp(amqpclient, {topic: '$RPC/service/:service'});
 			t.equal(client.client, amqpclient);
 			t.ok(client.options.topic);
-			client.close(done);
+			return client.close(100);
 		});
 	});
 
 	describe('integration', function () {
-		var url = 'amqp://localhost';
+		const url = 'amqp://localhost';
 
-		var server, client;
+		let server, client;
 
 		beforeEach(function (done) {
 			server = rayson.server(s.server.methods, {collect: false}).amqp(url, 'rpc/service/123');

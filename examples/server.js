@@ -1,14 +1,14 @@
 "use strict";
 
-var rayson = require('../'/*'rayson'*/);
+const rayson = require('..'/*'rayson'*/);
 
-var moscaServer = new require('mosca').Server({port: 9999}); // start mosca server for test
+// const moscaServer = new require('mosca').Server({port: 9999}); // start mosca server for test
 
-var server = rayson.server({
+const server = rayson.server({
 	localtime: function (cb) {
 		console.log('localtime has been called');
 		cb(null, new Date());
 	}
-}).mqtt('mqtt://localhost:9999', '$rpc/server1/localtime');
+}, {collect: false}).mqtt('mqtt://localhost:9999', '$rpc/server1/localtime');
 
-server.format('msgpack'); // default is `json`
+// server.format('msgpack'); // default is `json`

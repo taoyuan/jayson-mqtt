@@ -1,6 +1,6 @@
 'use strict';
 
-var rayson = module.exports = require('jayson');
+const rayson = module.exports = require('jayson');
 
 rayson.client.mqtt = require('./lib/mqtt/mqtt-client');
 rayson.client.amqp = require('./lib/amqp/amqp-client');
