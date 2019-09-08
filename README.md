@@ -1,7 +1,7 @@
 # rayson
 
 [![Build Status](https://travis-ci.org/taoyuan/rayson.svg?branch=master)](https://travis-ci.org/taoyuan/rayson)
-[![Dependencies](https://david-dm.org/taoyuan/rayson.svg)](https://david-dm.org/taoyuan/rayson)
+[![Dependencies](https://david-dm.org/taoyuan/rayson.svg)](https://david-dm.org/taoyuan/rayson) [![Greenkeeper badge](https://badges.greenkeeper.io/taoyuan/rayson.svg)](https://greenkeeper.io/)
 
 > Rayson is a JSON-RPC 2.0 mqtt client and mqtt server for node.js based on jayson.
 
